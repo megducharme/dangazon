@@ -1,0 +1,27 @@
+{% extends 'bangazon_ultra/index.html' %}
+{% block content %}
+
+
+<h1 id='product-header'>Product Types</h1>
+
+    {% for product_type in product_types %}
+    <a class="col-md-4 item" href="{% url 'bangazon_ultra:allProductsView' product_type.id %}">
+        <h2 class='product-type'>{{ product_type.category_name }}</h2>
+
+        <ul class='list-group'>
+        <p class='twenty-recent'>recently added products</p>
+        {% for product in products %}
+            {% if product_type.id == product.product_type_id %}
+                <li id='product-item' class="list-group-item">
+                <span class="badge">{{product.quantity}}</span>
+                {{product.title}}</li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+        {% empty %}
+        <p>No product types have been added yet.</p>
+    </div>
+    </a>
+    {% endfor %}
+
+{% endblock content %}

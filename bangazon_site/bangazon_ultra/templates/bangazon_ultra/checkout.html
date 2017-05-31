@@ -1,0 +1,27 @@
+{% extends 'bangazon_ultra/index.html' %}
+
+{% block content %}
+<h1>Choose Your Payment Type</h1>
+<button><a href="{% url 'bangazon_ultra:PaymentTypeView' %}"> (Or add a new payment type)</a></button>
+<br>
+ <br>
+<form id='payment-list' action="{% url 'bangazon_ultra:confirm_order' %}" method="post">
+
+    {% csrf_token %}
+    {%if payment_types|length > 0 %}
+            <h5> Card Number</h5>
+            <select value='{{ payment.pk }}' name='payment_type_id'>{% for payment in payment_types %}
+            <option>{{ payment.account_number }}</option>
+            {% endfor %}
+            </select>
+
+
+        <br><br>
+    
+        <button type='submit'>Complete Order</button>
+      
+    {%endif%}
+</form> 
+
+
+{% endblock %}

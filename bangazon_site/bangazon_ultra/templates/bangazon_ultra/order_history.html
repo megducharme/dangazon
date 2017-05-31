@@ -1,0 +1,16 @@
+{% extends 'bangazon_ultra/index.html' %}
+{% block content  %}
+
+<h1>Order History</h1>
+
+    {% for order in customer_orders  %}
+
+    <div>
+        <h4><a href="{% url 'bangazon_ultra:order_detail' order.id %}">{{order.date_created}}</a></h4>
+    </div>
+
+    {% empty %}
+        <p>You do not have any previous orders with Bangazon Inc.</p>
+    {% endfor %}
+
+{% endblock  %}

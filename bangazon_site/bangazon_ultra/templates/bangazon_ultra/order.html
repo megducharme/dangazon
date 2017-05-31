@@ -1,0 +1,67 @@
+{% extends 'bangazon_ultra/index.html' %}
+
+{% block content %}
+{% csrf_token %}
+<div class="row">
+<h1>Your Shopping Cart </h1>
+    <h5>User: {{ order.buyer.user.username }} | Order created: {{order.date_created}} </h5>
+</div>
+<div class="col-sm-10">
+<table class="table">
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity of Product on Order</th>
+        <th>Quantity Remaining for Each Product</th>
+        <th>Unit Price</th>
+        <th></th>
+    </tr>
+    </thead>
+     {%for product in products %}
+    <tr>
+        <td><a href="{% url 'bangazon_ultra:product_detail' product.id %}">{{product.title}}</a><br>{{product.description}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.id__count}}</td>
+        <td>
+        {%for all_prod in all_products %}
+            {%if all_prod.id == product.id %}
+            {{all_prod.quantity}}
+            {%endif%}
+        {%endfor%}
+        </td>
+        <td>
+            <p>${% widthratio product.id__count 1 product.price %}</p>
+        </td>
+        <td>
+        <form class="form-group col-sm-1"  action="{% url 'bangazon_ultra:add_product_to_order' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" value="{{product.id}}" name="product_id"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+             
+            </form>
+            <form class="form-group col-sm-1"  action="{% url 'bangazon_ultra:remove_product_from_order' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" value="{{product.id}}" name="product_id"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+             
+            </form>
+        </td>
+    <tr>
+    
+    {% endfor %}  
+    <th>Total Price</th> 
+  <td>{{total}}</td>
+  </tr>
+</table>
+{%if products|length > 0 %}
+<div class="row">
+    <form class="form-group col-sm-1"  action="{% url 'bangazon_ultra:checkout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" value="{{order.id}}" name="order_id">CHECKOUT</button>
+    </form>
+    {% else %}
+    <h3> It appears there are no products in your cart. Time to go shopping! </h3>
+{%endif%}
+</div>
+</div>
+  
+{% endblock %}

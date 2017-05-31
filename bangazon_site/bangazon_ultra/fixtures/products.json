@@ -1,0 +1,50 @@
+[
+  {
+    "model": "bangazon_ultra.product",
+    "fields": {
+      "title": "Desk",
+      "description": "ITS SO GREAT",
+      "seller": 1,
+      "product_type": 1,
+      "price": 4.50,
+      "quantity": 5,
+      "date_created": "2017-30-5"
+    }
+  },
+  {
+    "model": "bangazon_ultra.product",
+    "fields": {
+      "title": "Pencil",
+      "description": "Smooth writing",
+      "seller": 1,
+      "product_type":2,
+      "price": 1.50,
+      "quantity": 25,
+      "date_created": "2017-30-5"
+    }
+  },
+  {
+    "model": "bangazon_ultra.product",
+    "fields": {
+      "title": "Hat",
+      "description": "Keeps you warm, and fashionable",
+      "seller": 2,
+      "product_type":1,
+      "price": 14.50,
+      "quantity": 2,
+      "date_created": "2017-30-5"
+    }
+  },
+  {
+    "model": "bangazon_ultra.product",
+    "fields": {
+      "title": "Computer",
+      "description": "You need this to code.",
+      "seller": 2,
+      "product_type":4,
+      "price": 1114.50,
+      "quantity": 5,
+      "date_created": "2017-30-5"
+    }
+  }
+]

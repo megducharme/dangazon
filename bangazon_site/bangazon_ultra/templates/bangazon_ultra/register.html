@@ -1,0 +1,17 @@
+{% extends 'bangazon_ultra/index.html' %}
+
+{% block content %}
+  <h1>Register New User</h1>
+  <form class="" action="{% url 'bangazon_ultra:register_customer' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" value="" placeholder="username">
+    <input type="text" name="email" value="" placeholder="Email">
+    <input type="password" name="password" value="" placeholder="Password">
+    <input type="text" name="first_name" value="" placeholder="Enter First Name">
+    <input type="text" name="last_name" value="" placeholder="Enter Last Name">
+    <input type="text" name="phone" value="" placeholder="Enter Phone Number">
+    <input type="text" name="shipping_address" value="" placeholder="Enter Street Address">
+    <button type="submit" name="button">Submit</button>
+  </form>
+
+{% endblock %}

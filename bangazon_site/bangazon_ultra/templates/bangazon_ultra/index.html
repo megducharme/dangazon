@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bangazon Site</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'bangazon_ultra/main.css' %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  </head>
+  <body>
+
+    <div class="menu">
+      <ul>
+        <a href="{% url 'bangazon_ultra:index' %}"><h1>Bangazon</h1></a>
+        {%for item in navigation%}
+
+          <li class="navbar-{{item.prop}}"> <a href="{{item.link}}">{{ item.number }}
+          {% if item.name == 'View Cart'%}
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+          {% else%}
+            {{item.name}}
+          {%endif%}
+          </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% csrf_token %}
+    <div class="row text-center">
+        <h1>Welcome to Bangazon</h1>
+    </div>
+    <div class="row text-center">
+        <h5>Nashville Software School's Premier E-commerce Platform</h5>
+    </div>
+
+    <div>
+      <h3>Bangazon Seller's Most Recent Products</h3>
+      {% for product in products %}
+        <h4>{{forloop.counter}}. <a href="{% url 'bangazon_ultra:product_detail' product.id %}">{{product.title}}</a></h4>
+      {% endfor %}
+    </div>
+
+<!--     {%for type in producttypes%}
+        <div class="row col-sm-4">
+            <h2 style="text-transform:uppercase;" class="text-center">{{type.category_name}}</h2>
+            <ul class="list-group">
+                {%for product in products %}
+                    {%if product.product_type_id == type.id %}
+                        <li class="list-group-item">
+                        <span class="badge">{{product.quantity}}</span>
+                        <a href="{% url 'bangazon_ultra:product_detail' product.id %}">{{product.title}}</a></li>
+                    {%endif%}
+                {%endfor%}
+            </ul>
+        </div>
+    {%endfor%} -->
+
+
+    <div class="wrapper container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>

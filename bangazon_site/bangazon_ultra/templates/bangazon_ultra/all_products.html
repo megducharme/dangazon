@@ -1,0 +1,17 @@
+{% extends 'bangazon_ultra/index.html' %}
+{% block content  %}
+
+<h1>{{product_type_name}}</h1>
+
+    {% for product in products  %}
+        <a href="{% url 'bangazon_ultra:product_detail' product.id %}">
+        <div class="products">
+            <h2>{{product.title}}</h2>
+            <p class="price">${{product.price}}</p>
+        </div>
+        </a>
+        {% empty %}
+            <p>No products have been added to this product type.</p>
+    {% endfor %}
+
+{% endblock  %}

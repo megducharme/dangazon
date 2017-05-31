@@ -1,0 +1,26 @@
+{% extends 'bangazon_ultra/index.html' %}
+
+{% block content %}
+
+    <h3>Existing Payment Types</h3>
+    <ul id='payment-list' action="{% url 'bangazon_ultra:checkout' %" method="get">
+        {% for payment in payment_types %}
+        <li>{{ payment.payment_name }} [<u>#{{ payment.account_number }}</u>]</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+    <h3>Add New Payment Type</h3>
+
+    <form class="payment-type" action="{% url 'bangazon_ultra:add_payment_type' %}" method="post">
+
+        {% csrf_token %}
+        <input type='text' name="account_number" value='' placeholder="Enter Account Number">
+        <input type='text' name='payment_name' value='' placeholder="Enter Payment Name (ie. Visa)">
+        <input type='text' name='expiration_date' value='' placeholder="Enter Expiration Date">
+        <input type='text' name='billing_address' value='' placeholder="Enter Billing Address">
+        <button type='submit'>Add</button>
+
+    </form>
+
+{% endblock %}

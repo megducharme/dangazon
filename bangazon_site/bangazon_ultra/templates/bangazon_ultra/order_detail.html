@@ -1,0 +1,15 @@
+{% extends 'bangazon_ultra/index.html' %}
+
+{% block content %}
+<h1>Order {{order.id}} Detail</h1>
+<br>
+
+    {% for product in products %}
+        <h4>{{product.title}}</h4>
+        <h4>{{product.description}}</h4>
+        <h4>${{product.price}}</h4>
+        <br>
+    {% endfor %}
+
+
+{% endblock %}

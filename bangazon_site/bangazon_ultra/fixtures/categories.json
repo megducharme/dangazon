@@ -1,0 +1,32 @@
+[
+  {
+    "model": "bangazon_ultra.producttypes",
+    "fields": {
+      "category_name": "Home Goods"
+    }
+  },
+  {
+    "model": "bangazon_ultra.producttypes",
+    "fields": {
+      "category_name": "Electronics"
+    }
+  },
+  {
+    "model": "bangazon_ultra.producttypes",
+    "fields": {
+      "category_name": "Clothing"
+    }
+  },
+  {
+    "model": "bangazon_ultra.producttypes",
+    "fields": {
+      "category_name": "Office Supplies"
+    }
+  },
+  {
+    "model": "bangazon_ultra.producttypes",
+    "fields": {
+      "category_name": "Pet Supplies"
+    }
+  }
+]

@@ -1,0 +1,12 @@
+{% extends 'bangazon_ultra/index.html' %}
+{% block content %}
+
+
+<h1 id='product-header'>{{customer.user.first_name}}'s Profile</h1>
+
+<a href="{% url 'bangazon_ultra:PaymentTypeView' %}">Add Payment Type</a>
+<br>
+<a href="{% url 'bangazon_ultra:order_history' %}">View Order History</a>
+
+
+{% endblock content %}
